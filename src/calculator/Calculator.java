@@ -26,6 +26,9 @@ public class Calculator extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
+		// Support regex constant
+		String numberRegex = "[0-9]";
+		
 		// Containers declaration
 		VBox root;
 		HBox columnsWrapper;
@@ -208,31 +211,28 @@ public class Calculator extends Application {
 		b0.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				str = display.getText();
-				if(!str.equals(""))	// Check this prior to prevent out of index error
-					if(!str.substring(str.length() - 1).matches("/"))	// Avoiding dividing by zero
-						if(!resultShowing)	// Result scenario handling
-							display.setText(str+"0");	// Text appending
+				if(!str.equals("") && !str.substring(str.length() - 1).matches("/"))	// Avoiding dividing by zero
+					if(!resultShowing)	// Result scenario handling
+						display.setText(str+"0");	// Text appending
 			}
 		});
 		bPoint.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				str = display.getText();
-				if(!str.equals(""))
-					// The following prevents: a point after a result, a point after !numbers, a second point for the same number
-					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]") && !decimalPart) {
-						display.setText(str+".");	// Text appending
-						decimalPart = true;			// Marking the following numbers as decimal part till a symbol breaks in, or result is pressed
-					}
+				// The following prevents: a point after a result, a point after !numbers, a second point for the same number
+				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches("numberRegex") && !decimalPart) {
+					display.setText(str+".");	// Text appending
+					decimalPart = true;			// Marking the following numbers as decimal part till a symbol breaks in, or result is pressed
+				}
 			}
 		});
 		bPlus.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(!str.equals(""))	// Check this prior to prevent out of index error
-					// The following prevents: a symbol after a result, a symbol after a symbol
-					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
-						display.setText(str+"+");	// Text appending
+				// The following prevents: a symbol after a result, a symbol after a symbol
+				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
+					display.setText(str+"+");	// Text appending
 			}
 		});
 		bMinus.setOnAction(new EventHandler<ActionEvent>() {
@@ -241,7 +241,7 @@ public class Calculator extends Application {
 				str = display.getText();
 				if(!str.equals(""))	// Check this prior to prevent out of index error
 					// The following prevents: a symbol after a result, a symbol after a symbol
-					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
+					if(!resultShowing && str.substring(str.length() - 1).matches(numberRegex))
 						display.setText(str+"-");	// Text appending
 			}
 		});
@@ -249,20 +249,18 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(!str.equals(""))	// Check this prior to prevent out of index error
-					// The following prevents: a symbol after a result, a symbol after a symbol
-					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
-						display.setText(str+"×");	// Text appending
+				// The following prevents: a symbol after a result, a symbol after a symbol
+				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
+					display.setText(str+"×");	// Text appending
 			}
 		});
 		bQuot.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(!str.equals(""))	// Check this prior to prevent out of index error
-					// The following prevents: a symbol after a result, a symbol after a symbol
-					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
-						display.setText(str+"/");	// Text appending
+				// The following prevents: a symbol after a result, a symbol after a symbol
+				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
+					display.setText(str+"/");	// Text appending
 			}
 		});
 		bClear.setOnAction(new EventHandler<ActionEvent>() {
