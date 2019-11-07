@@ -5,7 +5,7 @@ addons:
   sonarcloud:
     organization: "simozmp"
     token:
-      secure: c05d63662aee739a134d54ec8f46edd0a1cf1a85
+      secure: "Ew40812V6qMVWCzigRCSlGEkit2Qz9yQk8cyp6vjwUxuRqZeVNzgUSBDRHUGRSfRMq4Dh/zz9Q1shO7lVbhw7rrVbwROakPoQ9VJK1mIGZRIW2qYJMP2k5uVyKbP+NYsCTv62Zx8NPUHIPpgf769ZVgb3oZ5A8i/5X3QSAIXq9hQiyeo9jUFZWA0YC0A2vgfT+bCF1aoS/UIGlU6+TZmdOObXZnObOqrXtYvjVn/7wDTrdzN1t4nwYHkg8szNx5kCKIh/4tJAFbTmj9XdeLm+3+uOV9xNL1cGbjli0VsjApOIv9e6Ji7o/Rsl+C8io+cT0Isr4y3+E7i8hcBl9bRUskUOm8+1n09RGqxfotMnRwDaOYaP9/AAiCDXKxnMLbYHgnH1rlrMbYb940uI7sTkzX3hnpFYvLkU0WHO2s6e/eZduagwKnFwnmFGoy1HkOw1xEsdLC095WYAr0AAUTy8RIksOdlf1CLbRPwyzxbnEXymL+zltSpv5VPFlliGxk6w+j0IlANdP5bWRS3UcTiWB9HQt7BGxpqyaJs3SIHpTSKepwq33bGxsZWsgxu/iBe2zlyk2xoTNJZLeUKVz4C7UyGPKo3mQVNb/JN0kUfcdWlgWILGJEhFg0JOa0pEHADT0IiSrhD+3LCxWG4qCLRhGJbT+GAEyQwheq5Ut7WRvU="
 script:
 - ant build
 - sonar-scanner -X
