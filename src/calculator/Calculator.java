@@ -189,7 +189,7 @@ public class Calculator extends Application {
 		b0.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				str = display.getText();
-				if(str != "")	// Check this prior to prevent out of index error
+				if(!str.equals(""))	// Check this prior to prevent out of index error
 					if(!str.substring(str.length() - 1).matches("/"))	// Avoiding dividing by zero
 						if(!resultShowing)	// Result scenario handling
 							display.setText(str+"0");	// Text appending
@@ -198,7 +198,7 @@ public class Calculator extends Application {
 		bPoint.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				str = display.getText();
-				if(str != "")
+				if(!str.equals(""))
 					// The following prevents: a point after a result, a point after !numbers, a second point for the same number
 					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]") && !decimalPart) {
 						display.setText(str+".");	// Text appending
@@ -210,7 +210,7 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(str != "")	// Check this prior to prevent out of index error
+				if(!str.equals(""))	// Check this prior to prevent out of index error
 					// The following prevents: a symbol after a result, a symbol after a symbol
 					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
 						display.setText(str+"+");	// Text appending
@@ -220,7 +220,7 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(str != "")	// Check this prior to prevent out of index error
+				if(!str.equals(""))	// Check this prior to prevent out of index error
 					// The following prevents: a symbol after a result, a symbol after a symbol
 					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
 						display.setText(str+"-");	// Text appending
@@ -230,7 +230,7 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(str != "")	// Check this prior to prevent out of index error
+				if(!str.equals(""))	// Check this prior to prevent out of index error
 					// The following prevents: a symbol after a result, a symbol after a symbol
 					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
 						display.setText(str+"×");	// Text appending
@@ -240,7 +240,7 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(str != "")	// Check this prior to prevent out of index error
+				if(!str.equals(""))	// Check this prior to prevent out of index error
 					// The following prevents: a symbol after a result, a symbol after a symbol
 					if(!resultShowing && str.substring(str.length() - 1).matches("[0-9]"))
 						display.setText(str+"/");	// Text appending
