@@ -11,23 +11,13 @@ import javafx.scene.Scene;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import java.lang.String;
 
 public class Calculator extends Application {
-	
-	// Containers declaration
-	private VBox root;
-	private HBox columnsWrapper;
-	private VBox column1, column2, column3, column4;
 
-	// Components declaration
-	private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,bPoint,bClear,bPlus,bMinus,bProduct,bQuot,bResult;
-	private Label display;
-	
-	// Support variables
+	// Support variables declaration
 	private String str;
-	private boolean resultShowing,	// True when a result is shown
-					decimalPart;	// True when writing the decimal part of a number
+	private boolean resultShowing = false;	// True when a result is shown
+	private boolean decimalPart = false;	// True when writing the decimal part of a number
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -35,6 +25,35 @@ public class Calculator extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
+		
+		// Containers declaration
+		VBox root;
+		HBox columnsWrapper;
+		VBox column1;
+		VBox column2;
+		VBox column3;
+		VBox column4;
+
+		// Components declaration
+		Button b1;
+		Button b2;
+		Button b3;
+		Button b4;
+		Button b5;
+		Button b6;
+		Button b7;
+		Button b8;
+		Button b9;
+		Button b0;
+		Button bPoint;
+		Button bClear;
+		Button bPlus;
+		Button bMinus;
+		Button bProduct;
+		Button bQuot;
+		Button bResult;
+		Label display;
+		
 		stage.setTitle("Calculator");
 
 		// Scripting engine setup
