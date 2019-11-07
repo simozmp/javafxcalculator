@@ -1,0 +1,11 @@
+language: java
+jdk:
+- openjdk8
+addons:
+  sonarcloud:
+    organization: "simozmp"
+    token:
+      secure: 22a56ed4461b17b9af578390209b291ccd562d4d
+script:
+- ant build
+- sonar-scanner
