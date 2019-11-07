@@ -211,9 +211,9 @@ public class Calculator extends Application {
 		b0.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				str = display.getText();
-				if(!str.equals("") && !str.substring(str.length() - 1).matches("/"))	// Avoiding dividing by zero
-					if(!resultShowing)	// Result scenario handling
-						display.setText(str+"0");	// Text appending
+				// The following prevents: a symbol as first character, a symbol after a result, dividing by zero
+				if(!str.equals("") && !resultShowing && !str.substring(str.length() - 1).matches("/"))
+					display.setText(str+"0");	// Text appending
 			}
 		});
 		bPoint.setOnAction(new EventHandler<ActionEvent>() {
@@ -230,7 +230,7 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				// The following prevents: a symbol after a result, a symbol after a symbol
+				// The following prevents: a symbol as first character, a symbol after a result, a symbol after a symbol
 				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
 					display.setText(str+"+");	// Text appending
 			}
@@ -239,17 +239,16 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				if(!str.equals(""))	// Check this prior to prevent out of index error
-					// The following prevents: a symbol after a result, a symbol after a symbol
-					if(!resultShowing && str.substring(str.length() - 1).matches(numberRegex))
-						display.setText(str+"-");	// Text appending
+				// The following prevents: a symbol as first character, a symbol after a result, a symbol after a symbol
+				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
+					display.setText(str+"-");	// Text appending
 			}
 		});
 		bProduct.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				// The following prevents: a symbol after a result, a symbol after a symbol
+				// The following prevents: a symbol as first character, a symbol after a result, a symbol after a symbol
 				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
 					display.setText(str+"×");	// Text appending
 			}
@@ -258,7 +257,7 @@ public class Calculator extends Application {
 			public void handle(ActionEvent event) {
 				decimalPart = false;
 				str = display.getText();
-				// The following prevents: a symbol after a result, a symbol after a symbol
+				// The following prevents: a symbol as first character, a symbol after a result, a symbol after a symbol
 				if(!str.equals("") && !resultShowing && str.substring(str.length() - 1).matches(numberRegex))
 					display.setText(str+"/");	// Text appending
 			}
